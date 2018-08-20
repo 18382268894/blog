@@ -9,8 +9,13 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"blog/logic"
 )
 
 func IndexHandle(c *gin.Context){
-	c.HTML(http.StatusOK,"/views/index.html",nil)
+	articleRecordList,err := logic.GetArticleRecordList()
+	if err != nil{
+		c.HTML(http.StatusInternalServerError,"views/500.html",nil)
+	}
+	c.HTML(http.StatusOK,"views/index.html",articleRecordList)
 }

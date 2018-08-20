@@ -23,10 +23,7 @@ func main(){
 
 	//2.文章发表页
 	router.GET("/article/new",controller.NewArticle)
-	router.POST("article/post_article",controller.PostAarticle)
-
-
-
+	router.POST("/article/new",controller.PostArticle)
 
 	router.Run(":8080")
 }
